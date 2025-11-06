@@ -1,5 +1,6 @@
 import {User} from '../models/index.js';
 import {Post} from '../models/index.js';
+import Profile from '../models/Profile.js';
 
 // ✅ Create new user
 export const createUser = async (req, res) => {
@@ -68,5 +69,31 @@ export const getUsersWithPosts = async (req, res) => {
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+};
+
+export const createUserWithProfile = async (req, res) => {
+  try {
+    console.log(req.body);
+    const { name, email, bio, avatar } = req.body;
+
+    // Create user
+    const user = await User.create({ name, email });
+
+    // Create profile linked to that user
+    const profile = await Profile.create({ bio, avatar, userId: user.id });
+
+    res.status(201).json({ user, profile });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getUsersWithProfile = async (req, res) => {
+  try {
+    const users = await User.findAll({ include: Profile });
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
