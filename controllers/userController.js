@@ -74,7 +74,7 @@ export const getUsersWithPosts = async (req, res) => {
 
 export const createUserWithProfile = async (req, res) => {
   try {
-    console.log(req.body);
+   
     const { name, email, bio, avatar,age,city } = req.body;
 
     // Create user
