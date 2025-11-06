@@ -1,6 +1,10 @@
 import express from 'express';
-import { sequelize } from './config/databse.js';
-import userRoutes from './routes/userRoutes.js';
+import  sequelize  from './config/database.js';
+import userRoutes from './routes/UserRoutes.js';
+import postRoutes from './routes/PostRoutes.js';
+import './models/User.js';
+import './models/Post.js';
+
 
 const app = express()
 
@@ -9,6 +13,7 @@ app.use(express.json())
 
 
 app.use('/api/users',userRoutes)
+app.use('/api/posts', postRoutes);
 
 // Start server
 const PORT = process.env.PORT || 4000

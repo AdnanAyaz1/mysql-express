@@ -1,7 +1,7 @@
 
 import { Sequelize } from 'sequelize'
 
-export const sequelize = new Sequelize(
+const sequelize = new Sequelize(
     process.env.db_name,
     process.env.db_username,
     process.env.db_password,
@@ -10,3 +10,5 @@ export const sequelize = new Sequelize(
         dialect: 'mysql',
     }
 );
+
+export default sequelize;

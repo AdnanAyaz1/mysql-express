@@ -1,4 +1,5 @@
-import {User} from '../models/user.js';
+import User from '../models/User.js';
+import Post from '../models/Post.js';
 
 // ✅ Create new user
 export const createUser = async (req, res) => {
@@ -57,5 +58,15 @@ export const deleteUser = async (req, res) => {
     res.status(204).send();
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
+  }
+};
+
+export const getUsersWithPosts = async (req, res) => {
+  try {
+
+    const users = await User.findAll({include: Post});
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
