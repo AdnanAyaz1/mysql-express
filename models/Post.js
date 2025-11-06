@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js'; // adjust path if needed
-import User from './User.js';
+
 
 const Post = sequelize.define('Post', {
   title: {
@@ -12,9 +12,5 @@ const Post = sequelize.define('Post', {
     allowNull: false
   }
 });
-
-// Relation
-User.hasMany(Post, { foreignKey: 'userId', onDelete: 'CASCADE' });
-Post.belongsTo(User, { foreignKey: 'userId' });
 
 export default Post;

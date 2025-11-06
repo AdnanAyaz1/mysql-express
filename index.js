@@ -2,8 +2,7 @@ import express from 'express';
 import  sequelize  from './config/database.js';
 import userRoutes from './routes/UserRoutes.js';
 import postRoutes from './routes/PostRoutes.js';
-import './models/User.js';
-import './models/Post.js';
+
 
 
 const app = express()
@@ -23,7 +22,5 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 sequelize.authenticate()
   .then(async () => {
     console.log('✅ Database connected successfully!');
-    await sequelize.sync({ alter: true });
-    console.log('✅ Tables synced!');
   })
   .catch((err) => console.error('❌ DB connection error:', err));
