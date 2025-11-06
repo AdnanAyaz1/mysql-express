@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { createPost, createPostWithTags, getAllPosts, getPostsWithTags } from '../controllers/PostController.js';
+import { createPost, createPostWithTags, filteredPosts, getAllPosts, getPostsWithTags } from '../controllers/PostController.js';
 
 const router = express.Router();
 
@@ -12,5 +12,7 @@ router.get('/', getAllPosts);
 
 router.post('/tags', createPostWithTags);
 router.get('/tags', getPostsWithTags);
+
+router.post('/filter',filteredPosts)
 
 export default router;
