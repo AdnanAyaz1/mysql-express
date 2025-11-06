@@ -66,11 +66,18 @@ export const filteredPosts = async (req, res) => {
   }
 };
 
-// | Operator   | Example                                               | Meaning         |
-// | ---------- | ----------------------------------------------------- | --------------- |
-// | `[Op.eq]`  | `{ id: { [Op.eq]: 1 } }`                              | equals 1        |
-// | `[Op.ne]`  | `{ id: { [Op.ne]: 1 } }`                              | not equals 1    |
-// | `[Op.gt]`  | `{ age: { [Op.gt]: 18 } }`                            | greater than 18 |
-// | `[Op.gte]` | `{ createdAt: { [Op.gte]: new Date('2024-01-01') } }` | after date      |
-// | `[Op.in]`  | `{ id: { [Op.in]: [1, 2, 3] } }`                      | in array        |
-// | `[Op.or]`  | `{ [Op.or]: [{ id: 1 }, { id: 2 }] }`                 | OR condition    |
+// | SQL       | Sequelize                        | Example                                                        |
+// | --------- | -------------------------------- | -------------------------------------------------------------- |
+// | `=`       | `{ [Op.eq]: value }`             | `{ id: { [Op.eq]: 1 } }`                                       |
+// | `!=`      | `{ [Op.ne]: value }`             | `{ username: { [Op.ne]: 'adnan' } }`                           |
+// | `>`       | `{ [Op.gt]: value }`             | `{ age: { [Op.gt]: 18 } }`                                     |
+// | `<`       | `{ [Op.lt]: value }`             | `{ age: { [Op.lt]: 30 } }`                                     |
+// | `>=`      | `{ [Op.gte]: value }`            | `{ age: { [Op.gte]: 18 } }`                                    |
+// | `<=`      | `{ [Op.lte]: value }`            | `{ age: { [Op.lte]: 50 } }`                                    |
+// | `LIKE`    | `{ [Op.like]: '%text%' }`        | `{ title: { [Op.like]: '%Sequelize%' } }`                      |
+// | `IN`      | `{ [Op.in]: [values] }`          | `{ id: { [Op.in]: [1,2,3] } }`                                 |
+// | `NOT IN`  | `{ [Op.notIn]: [values] }`       | `{ id: { [Op.notIn]: [1,2,3] } }`                              |
+// | `OR`      | `{ [Op.or]: [cond1, cond2] }`    | `{ [Op.or]: [{ age: 18 }, { name: 'Ali' }] }`                  |
+// | `AND`     | `{ [Op.and]: [cond1, cond2] }`   | `{ [Op.and]: [{ age: { [Op.gt]: 18 } }, { city: 'Lahore' }] }` |
+// | `BETWEEN` | `{ [Op.between]: [start, end] }` | `{ price: { [Op.between]: [10, 100] } }`                       |
+
